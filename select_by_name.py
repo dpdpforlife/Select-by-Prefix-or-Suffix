@@ -52,16 +52,16 @@ class SelectByPrefix(bpy.types.Operator):
         # determine selected material
         sname = context.object.name  # type: object
 
-        if not '.' in sname:
+        if not '_' in sname:
             sbase, ssuffix = sname, None
         else:    
-            sbase, ssuffix = sname.split('.')
+            sbase, ssuffix = sname.split('_')
             
         for ob in context.scene.objects:
-            if not '.' in ob.name:
+            if not '_' in ob.name:
                 bases, suffixes = ob.name, None
             else:
-                bases, suffixes = ob.name.split('.')
+                bases, suffixes = ob.name.split('_')
             if bases==sbase:
                 ob.select = True
 
@@ -84,16 +84,16 @@ class SelectBySuffix(bpy.types.Operator):
         # determine selected material
         sname = context.object.name  # type: object
 
-        if not '.' in sname:
+        if not '_' in sname:
             sbase, ssuffix = sname, None
         else:    
-            sbase, ssuffix = sname.split('.')
+            sbase, ssuffix = sname.split('_')
             
         for ob in context.scene.objects:
-            if not '.' in ob.name:
+            if not '_' in ob.name:
                 bases, suffixes = ob.name, None
             else:
-                bases, suffixes = ob.name.split('.')
+                bases, suffixes = ob.name.split('_')
             if ssuffix==suffixes:
                 ob.select = True
 
