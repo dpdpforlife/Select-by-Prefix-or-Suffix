@@ -53,16 +53,16 @@ class SelectByPrefix(bpy.types.Operator):
         sname = context.object.name  # type: object
 
         if not '_' in sname:
-            sbase, ssuffix = sname, None
+            spreffix = [sname, None]
         else:    
-            sbase, ssuffix = sname.split('_')
+            spreffix = sname.split('_')
             
         for ob in context.scene.objects:
             if not '_' in ob.name:
-                bases, suffixes = ob.name, None
+                preffixes = ob.name, None
             else:
-                bases, suffixes = ob.name.split('_')
-            if bases==sbase:
+                preffixes = ob.name.split('_')
+            if preffixes[0]==spreffix[0]:
                 ob.select = True
 
         return {'FINISHED'}
@@ -85,16 +85,16 @@ class SelectBySuffix(bpy.types.Operator):
         sname = context.object.name  # type: object
 
         if not '_' in sname:
-            sbase, ssuffix = sname, None
+            ssuffix = [sname, None]
         else:    
-            sbase, ssuffix = sname.split('_')
+            ssuffix = sname.split('_')
             
         for ob in context.scene.objects:
             if not '_' in ob.name:
-                bases, suffixes = ob.name, None
+                suffixes = ob.name, None
             else:
-                bases, suffixes = ob.name.split('_')
-            if ssuffix==suffixes:
+                suffixes = ob.name.split('_')
+            if ssuffix[-1]==suffixes[-1]:
                 ob.select = True
 
         return {'FINISHED'}    
